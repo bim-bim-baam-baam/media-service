@@ -1,0 +1,52 @@
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    networks:
+      - app-network
+    environment:
+      - MINIO_ROOT_USER=bimbimbambam
+      - MINIO_ROOT_PASSWORD=bimbimbambam
+    command: server ~/minio --console-address :9090
+    ports:
+      - "9090:9090"
+      - "9000:9000"
+    volumes:
+      - minio-data:/minio
+
+  minio-init:
+    image: minio/mc:latest
+    networks:
+      - app-network
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5 &&
+      mc alias set myminio http://minio:9000 bimbimbambam bimbimbambam &&
+      mc mb myminio/files &&
+      mc anonymous set public myminio/files
+      "
+
+  media-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: media-service
+    depends_on:
+      - minio-init
+    networks:
+      - app-network
+    ports:
+      - "8011:8011"
+    volumes:
+      - gradle-cache:/home/gradle/.gradle
+volumes:
+  minio-data:
+    driver: local
+  gradle-cache:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

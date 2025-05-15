@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: media-service
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+springdoc:
+  swagger-ui:
+    path: /
+
+minio:
+  bucket: files
+  access-key: bimbimbambam
+  secret-key: bimbimbambam
+  endpoint: http://localhost:9000
+
+server:
+  port: 8011
