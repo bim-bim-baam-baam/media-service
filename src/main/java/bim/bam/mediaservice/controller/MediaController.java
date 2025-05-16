@@ -1,6 +1,6 @@
-package errorcode.mediaservice.controller;
+package bim.bam.mediaservice.controller;
 
-import errorcode.mediaservice.service.MediaService;
+import bim.bam.mediaservice.service.MediaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;

@@ -1,4 +1,4 @@
-package errorcode.mediaservice.config;
+package bim.bam.mediaservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

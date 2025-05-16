@@ -1,6 +1,6 @@
-package errorcode.mediaservice.service;
+package bim.bam.mediaservice.service;
 
-import errorcode.mediaservice.config.MinioConfig;
+import bim.bam.mediaservice.config.MinioConfig;
 import io.minio.GetObjectArgs;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.MinioClient;

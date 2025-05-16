@@ -1,4 +1,4 @@
-package errorcode.mediaservice.config;
+package bim.bam.mediaservice.config;
 
 import io.minio.MinioClient;
 import lombok.Data;
